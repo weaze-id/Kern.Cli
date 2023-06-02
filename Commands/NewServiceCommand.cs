@@ -15,12 +15,9 @@ public class NewServiceCommand : Command<NewServiceCommandSettings>
         // Create the services folder if it doesn't exist
         Directory.CreateDirectory(Path.Combine(projectDirectory, "Services", "Interfaces"));
         Directory.CreateDirectory(Path.Combine(projectDirectory, "Services", "Implementations"));
-        Directory.CreateDirectory(Path.Combine(projectDirectory, "Dtos", settings.Name!));
 
         CreateServiceFile(projectName, settings.Name!);
         CreateIServiceFile(projectName, settings.Name!);
-        CreateInDtoFile(projectName, settings.Name!);
-        CreateOutDtoFile(projectName, settings.Name!);
 
         Console.WriteLine($"Service '{settings.Name}' created successfully.");
         return 0;
@@ -52,38 +49,6 @@ public class NewServiceCommand : Command<NewServiceCommandSettings>
         if (File.Exists(filePath)) throw new DuplicateNameException("Service already exist");
 
         var template = TemplateUtils.GetTemplate("IService.txt");
-        template = template.Replace("PROJECT_NAME", projectName);
-        template = template.Replace("NAME", name);
-
-        File.WriteAllText(filePath, template);
-    }
-
-    private static void CreateInDtoFile(string projectName, string name)
-    {
-        var projectDirectory = Directory.GetCurrentDirectory();
-
-        var fileName = $"In{name}Dto.cs";
-        var filePath = Path.Combine(projectDirectory, "Dtos", name, fileName);
-
-        if (File.Exists(filePath)) throw new DuplicateNameException("DTO already exist");
-
-        var template = TemplateUtils.GetTemplate("InDto.txt");
-        template = template.Replace("PROJECT_NAME", projectName);
-        template = template.Replace("NAME", name);
-
-        File.WriteAllText(filePath, template);
-    }
-
-    private static void CreateOutDtoFile(string projectName, string name)
-    {
-        var projectDirectory = Directory.GetCurrentDirectory();
-
-        var fileName = $"Out{name}Dto.cs";
-        var filePath = Path.Combine(projectDirectory, "Dtos", name, fileName);
-
-        if (File.Exists(filePath)) throw new DuplicateNameException("DTO already exist");
-
-        var template = TemplateUtils.GetTemplate("OutDto.txt");
         template = template.Replace("PROJECT_NAME", projectName);
         template = template.Replace("NAME", name);
 

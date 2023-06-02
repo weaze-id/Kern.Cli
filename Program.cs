@@ -7,6 +7,10 @@ app.Configure(config =>
     config.AddBranch("new", branch =>
     {
         branch
+            .AddCommand<NewDtoCommand>("dto")
+            .WithDescription("Creates a new DTO file.");
+
+        branch
             .AddCommand<NewServiceCommand>("service")
             .WithDescription("Creates a new service file.");
 
