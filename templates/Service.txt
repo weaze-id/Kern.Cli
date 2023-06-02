@@ -11,7 +11,7 @@ public class NAMEService : INAMEService
         throw new NotImplementedException();
     }
 
-    public Task<List<OutNAMEDto>> GetListAsync(string? search, long? lastId)
+    public Task<(List<OutNAMEDto>?, ErrorBase?)> GetListAsync(string? search, long? lastId)
     {
         throw new NotImplementedException();
     }
