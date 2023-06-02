@@ -1,0 +1,14 @@
+using FluentValidation.Results;
+using Kern.Error;
+using PROJECT_NAME.Dtos.Auth;
+
+namespace PROJECT_NAME.Services.Interfaces;
+
+public interface INAMEService
+{
+    public Task<(OutNAMEDto?, ErrorBase?)> GetAsync(long id);
+    public Task<List<OutNAMEDto>> GetListAsync(string? search, long? lastId);
+    public Task<(OutNAMEDto?, ValidationResult?, ErrorBase?)> AddAsync(InNAMEDto dto);
+    public Task<(OutNAMEDto?, ValidationResult?, ErrorBase?)> UpdateAsync(long id, InNAMEDto dto);
+    public Task<ErrorBase?> DeleteAsync(long id);
+}

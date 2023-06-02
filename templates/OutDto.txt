@@ -1,0 +1,5 @@
+namespace PROJECT_NAME.Dtos.NAME;
+
+public class OutNAMEDto
+{
+}

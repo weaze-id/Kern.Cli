@@ -1,0 +1,72 @@
+using Kern.AspNetCore.Endpoints;
+using Kern.AspNetCore.Response.Extensions;
+using PROJECT_NAME.Services.Interfaces;
+
+namespace PROJECT_NAME.Endpoints;
+
+public class NAMEEndpoint : IEndpoints
+{
+    public IEndpointRouteBuilder MapEndpoints(IEndpointRouteBuilder endpoints)
+    {
+        var group = endpoints
+            .MapGroup("/NAME_LOWER")
+            .WithTags("NAME")
+            .RequireAuthorization();
+
+        group
+            .MapGet("/", GetListAsync)
+            .WithName("Get a list of NAME_LOWER")
+            .Produces<OutNAMEDto>();
+
+        group
+            .MapGet("/{id}", GetAsync)
+            .WithName("Get a NAME_LOWER by id")
+            .Produces<OutNAMEDto>();
+
+        group
+            .MapPost("/", AddAsync)
+            .WithName("Add new NAME_LOWER")
+            .Produces<OutNAMEDto>();
+
+        group
+            .MapPut("/", UpdateAsync)
+            .WithName("Update existing NAME_LOWER")
+            .Produces<OutNAMEDto>();
+
+        group
+            .MapDelete("/{id}", DeleteAsync)
+            .WithName("Delete existing NAME_LOWER");
+
+        return group;
+    }
+
+    private static async Task<IResult> GetListAsync(INAMEService service)
+    {
+        var result = await service.GetListAsync();
+        return result.Response();
+    }
+
+    private static async Task<IResult> GetAsync(long id, INAMEService service)
+    {
+        var result = await service.GetAsync(id);
+        return result.Response();
+    }
+
+    private static async Task<IResult> AddAsync(InNAMEDto dto, INAMEService service)
+    {
+        var result = await service.AddAsync(dto);
+        return result.Response();
+    }
+
+    private static async Task<IResult> UpdateAsync(long id, InNAMEDto dto, INAMEService service)
+    {
+        var result = await service.UpdateAsync(id, dto);
+        return result.Response();
+    }
+
+    private static async Task<IResult> DeleteAsync(long id, INAMEService service)
+    {
+        var result = await service.DeleteAsync(id);
+        return result.Response();
+    }
+}

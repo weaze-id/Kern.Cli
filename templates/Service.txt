@@ -1,0 +1,34 @@
+using PROJECT_NAME.Services.Interfaces;
+using FluentValidation.Results;
+using Kern.Error;
+using PROJECT_NAME.Dtos.Auth;
+
+namespace PROJECT_NAME.Services.Implementations;
+
+public class NAMEService : INAMEService
+{
+    public Task<(OutNAMEDto?, ErrorBase?)> GetAsync(long id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<List<OutNAMEDto>> GetListAsync(string? search, long? lastId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<(OutNAMEDto?, ValidationResult?, ErrorBase?)> AddAsync(InNAMEDto dto)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<(OutNAMEDto?, ValidationResult?, ErrorBase?)> UpdateAsync(long id, InNAMEDto dto)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<ErrorBase?> DeleteAsync(long id)
+    {
+        throw new NotImplementedException();
+    }
+}
