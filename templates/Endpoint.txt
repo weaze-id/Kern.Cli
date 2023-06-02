@@ -40,9 +40,9 @@ public class NAMEEndpoint : IEndpoints
         return group;
     }
 
-    private static async Task<IResult> GetListAsync(INAMEService service)
+    private static async Task<IResult> GetListAsync(string? search, long? lastId, INAMEService service)
     {
-        var result = await service.GetListAsync();
+        var result = await service.GetListAsync(search, lastId);
         return result.Response();
     }
 

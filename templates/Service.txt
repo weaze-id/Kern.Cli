@@ -1,7 +1,6 @@
 using PROJECT_NAME.Services.Interfaces;
 using FluentValidation.Results;
 using Kern.Error;
-using PROJECT_NAME.Dtos.Auth;
 
 namespace PROJECT_NAME.Services.Implementations;
 
